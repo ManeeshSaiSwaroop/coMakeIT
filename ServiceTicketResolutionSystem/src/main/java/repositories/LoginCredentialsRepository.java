@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import BeanClasses.LoginCredentials;
+
+import Beans.LoginCredentials;
 
 public interface LoginCredentialsRepository extends JpaRepository<LoginCredentials, String> {
 

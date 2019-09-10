@@ -1,6 +1,6 @@
-<%@page import="BeanClasses.ServiceEngineerDetails"%>
-<%@page import="BeanClasses.LoginCredentials"%>
-<%@page import="BeanClasses.Roles"%>
+<%@page import="Beans.ServiceEngineerDetails"%>
+<%@page import="Beans.LoginCredentials"%>
+<%@page import="Beans.Roles"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

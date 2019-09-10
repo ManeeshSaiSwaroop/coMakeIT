@@ -1,12 +1,13 @@
-package com.example.ServiceTicketResolutionSystem;
+package Rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import BeanClasses.LoginCredentials;
-import BusinessClasses.LoginOperations;
+
+import Beans.LoginCredentials;
+import BusinessLogic.LoginOperations;
 
 @RestController
 @RequestMapping("/Login")

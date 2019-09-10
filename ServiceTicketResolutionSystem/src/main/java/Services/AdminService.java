@@ -1,4 +1,4 @@
-package DAOClasses;
+package Services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import BeanClasses.Departments;
-import BeanClasses.LoginCredentials;
-import BeanClasses.Priorities;
-import BeanClasses.Roles;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
+import Beans.Departments;
+import Beans.LoginCredentials;
+import Beans.Priorities;
+import Beans.Roles;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
 import Interfaces.AdminDAOInterface;
 import repositories.DepartmentsRepository;
 import repositories.LoginCredentialsRepository;
@@ -21,7 +21,7 @@ import repositories.ServiceEngineerDetailsRepository;
 import repositories.TicketDetailsRepository;
 
 @Service
-public class AdminDAO implements AdminDAOInterface{
+public class AdminService implements AdminDAOInterface {
 
 	@Autowired
 	RolesRepository rolesRepository;

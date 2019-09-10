@@ -4,7 +4,7 @@
 <%
 	String registrationStatus = (String) request.getAttribute("registrationStatus");
 	String message = (String) request.getAttribute("message");
-	if (message != null)
+	if (message != null && !message.equals("Admin"))
 		out.println(message);
 %>
 

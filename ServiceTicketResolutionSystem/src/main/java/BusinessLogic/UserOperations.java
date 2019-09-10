@@ -1,24 +1,23 @@
-package BusinessClasses;
+package BusinessLogic;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import BeanClasses.Departments;
-import BeanClasses.Priorities;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
-import DAOClasses.UserDAO;
+
+import Beans.Departments;
+import Beans.Priorities;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
+import Services.UserService;
 
 @Component
 public class UserOperations {
 
 	@Autowired
-	UserDAO dao;
+	UserService dao;
 
 	public List<Departments> getDepartments() {
 		return dao.getDepartments();
@@ -43,7 +42,7 @@ public class UserOperations {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		details.setDateOfIssue(dateFormat.format(date));
-		details.setTicketID(generateTicketID());
+//		details.setTicketID(generateTicketID());
 		List<ServiceEngineerDetails> serviceEngineerDetails = dao.getCorrespondingEngineerTable(details);
 
 		for (int i = 0; i < serviceEngineerDetails.size(); i++) {
@@ -63,16 +62,6 @@ public class UserOperations {
 			dao.submitTicket(details);
 		}
 
-	}
-
-	/*
-	 * Generates a TicketID for the ticket raised by a user
-	 */
-	public String generateTicketID() {
-		long a = (long) Math.pow(10, 10);
-		a = a + (long) (new Random().nextInt(999999999));
-		String r = "CMIT" + Long.toString(a);
-		return r;
 	}
 
 	public List<TicketDetails> getUserTickets(TicketDetails ticketDetails) {

@@ -3,7 +3,7 @@ package repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import BeanClasses.Departments;
+import Beans.Departments;
 
 public interface DepartmentsRepository extends JpaRepository<Departments, Integer> {
 

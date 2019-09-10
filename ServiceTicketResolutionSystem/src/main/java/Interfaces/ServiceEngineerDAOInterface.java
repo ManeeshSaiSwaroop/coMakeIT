@@ -2,10 +2,10 @@ package Interfaces;
 
 import java.util.List;
 
-import BeanClasses.LoginCredentials;
-import BeanClasses.Priorities;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
+import Beans.LoginCredentials;
+import Beans.Priorities;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
 
 public interface ServiceEngineerDAOInterface {
 

@@ -1,20 +1,20 @@
-package BusinessClasses;
+package BusinessLogic;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import BeanClasses.LoginCredentials;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
-import DAOClasses.ServiceEngineerDAO;
+import Beans.LoginCredentials;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
+import Services.ServiceEngineerService;
 
 @Component
 public class ServiceEngineerOperations {
 
 	@Autowired
-	ServiceEngineerDAO dao;
+	ServiceEngineerService dao;
 
 	public List<TicketDetails> getServiceEngineerTickets(LoginCredentials credentials) {
 		return dao.getServiceEngineerTickets(credentials);

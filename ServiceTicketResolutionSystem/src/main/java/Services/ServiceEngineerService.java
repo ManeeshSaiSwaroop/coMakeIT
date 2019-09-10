@@ -1,4 +1,4 @@
-package DAOClasses;
+package Services;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,10 +10,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import BeanClasses.LoginCredentials;
-import BeanClasses.Priorities;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
+import Beans.LoginCredentials;
+import Beans.Priorities;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
 import Interfaces.ServiceEngineerDAOInterface;
 import repositories.LoginCredentialsRepository;
 import repositories.PrioritiesRepository;
@@ -21,7 +21,7 @@ import repositories.ServiceEngineerDetailsRepository;
 import repositories.TicketDetailsRepository;
 
 @Service
-public class ServiceEngineerDAO implements ServiceEngineerDAOInterface{
+public class ServiceEngineerService implements ServiceEngineerDAOInterface {
 
 	@Autowired
 	TicketDetailsRepository ticketDetailsRepository;

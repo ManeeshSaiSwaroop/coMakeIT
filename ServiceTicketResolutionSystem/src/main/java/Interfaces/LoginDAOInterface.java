@@ -1,6 +1,6 @@
 package Interfaces;
 
-import BeanClasses.LoginCredentials;
+import Beans.LoginCredentials;
 
 public interface LoginDAOInterface {
 

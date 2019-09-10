@@ -1,4 +1,4 @@
-package com.example.ServiceTicketResolutionSystem;
+package Controllers;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import BeanClasses.LoginCredentials;
-import BeanClasses.Priorities;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
+import Beans.LoginCredentials;
+import Beans.Priorities;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
 
 @Controller
 public class ServiceEngineerController {
@@ -145,8 +145,8 @@ public class ServiceEngineerController {
 	}
 
 	/*
-	 * It is invoked when service engineer clicks on resolve tickets
-	 * where in only the ticket InProgress will be showed
+	 * It is invoked when service engineer clicks on resolve tickets where in only
+	 * the ticket InProgress will be showed
 	 */
 	@RequestMapping(value = "/resolveTickets")
 	public ModelAndView resolveTickets(HttpSession session) {
@@ -175,7 +175,8 @@ public class ServiceEngineerController {
 	}
 
 	/*
-	 * It is invoked when service engineer clicks on close ticket where in the ticket which is InProgress will be closed
+	 * It is invoked when service engineer clicks on close ticket where in the
+	 * ticket which is InProgress will be closed
 	 */
 	@RequestMapping(value = "/closeTicket")
 	public ModelAndView closeTicket(HttpSession session) {
@@ -242,7 +243,8 @@ public class ServiceEngineerController {
 	}
 
 	/*
-	 * It is invoked when the service engineer clicks on logout and the session is invalidated
+	 * It is invoked when the service engineer clicks on logout and the session is
+	 * invalidated
 	 */
 	@RequestMapping(value = "/Logout")
 	public String Logout(HttpSession session) {

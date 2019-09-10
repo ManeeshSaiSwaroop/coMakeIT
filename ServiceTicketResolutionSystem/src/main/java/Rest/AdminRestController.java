@@ -1,4 +1,4 @@
-package com.example.ServiceTicketResolutionSystem;
+package Rest;
 
 import java.util.List;
 
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import BeanClasses.Departments;
-import BeanClasses.LoginCredentials;
-import BeanClasses.Roles;
-import BeanClasses.ServiceEngineerDetails;
-import BusinessClasses.AdminOperations;
+import Beans.Departments;
+import Beans.LoginCredentials;
+import Beans.Roles;
+import Beans.ServiceEngineerDetails;
+import BusinessLogic.AdminOperations;
 
 @RestController
 @RequestMapping("/admin")

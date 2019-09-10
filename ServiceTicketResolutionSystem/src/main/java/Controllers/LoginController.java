@@ -1,4 +1,4 @@
-package com.example.ServiceTicketResolutionSystem;
+package Controllers;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import BeanClasses.LoginCredentials;
+import Beans.LoginCredentials;
 
 @Controller
 public class LoginController {

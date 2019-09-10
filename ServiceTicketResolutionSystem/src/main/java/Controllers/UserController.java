@@ -1,4 +1,4 @@
-package com.example.ServiceTicketResolutionSystem;
+package Controllers;
 
 import java.util.List;
 
@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import BeanClasses.Departments;
-import BeanClasses.LoginCredentials;
-import BeanClasses.Priorities;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
+import Beans.Departments;
+import Beans.LoginCredentials;
+import Beans.Priorities;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
 
 @Controller
 public class UserController {
@@ -30,10 +30,11 @@ public class UserController {
 	Environment environment;
 
 	/*
-	 * It gets the list of departments and priorities and forwards it to SubmitTicketForm
+	 * It gets the list of departments and priorities and forwards it to
+	 * SubmitTicketForm
 	 */
 	@RequestMapping(value = "/raiseTicket")
-	public ModelAndView test() {
+	public ModelAndView ticketRaised() {
 		String port = environment.getProperty("local.server.port");
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -95,7 +96,8 @@ public class UserController {
 	}
 
 	/*
-	 * All the user tickets are extracted and forwarded to userTickets.jsp where he can view his tickets
+	 * All the user tickets are extracted and forwarded to userTickets.jsp where he
+	 * can view his tickets
 	 */
 	@RequestMapping(value = "/viewTickets")
 	public ModelAndView viewTickets(HttpSession session) {
@@ -124,7 +126,6 @@ public class UserController {
 
 	}
 
-	
 	/*
 	 * It is invoked when user clicks on logout and the session is invalidated
 	 */

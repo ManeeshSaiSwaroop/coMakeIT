@@ -1,5 +1,5 @@
-<%@page import="BeanClasses.ServiceEngineerDetails"%>
-<%@page import="BeanClasses.Priorities"%>
+<%@page import="Beans.ServiceEngineerDetails"%>
+<%@page import="Beans.Priorities"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

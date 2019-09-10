@@ -1,10 +1,13 @@
-package BeanClasses;
+package Beans;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "TicketDetails")
@@ -19,6 +22,9 @@ public class TicketDetails {
 	}
 
 	@Id
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "uuid")
+	@Column(updatable = false, nullable = false, name = "ticketID")
 	private String ticketID;
 	private String dateOfIssue;
 	private String requestedEndDate;

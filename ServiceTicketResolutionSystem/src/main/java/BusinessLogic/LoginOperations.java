@@ -1,16 +1,16 @@
-package BusinessClasses;
+package BusinessLogic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import BeanClasses.LoginCredentials;
-import DAOClasses.LoginDAO;
+import Beans.LoginCredentials;
+import Services.LoginService;
 
 @Component
 public class LoginOperations {
 
 	@Autowired
-	LoginDAO dao;
+	LoginService dao;
 
 	public String validate(LoginCredentials credentials) {
 		return dao.validate(credentials);

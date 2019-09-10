@@ -2,10 +2,10 @@ package Interfaces;
 
 import java.util.List;
 
-import BeanClasses.Departments;
-import BeanClasses.LoginCredentials;
-import BeanClasses.Roles;
-import BeanClasses.ServiceEngineerDetails;
+import Beans.Departments;
+import Beans.LoginCredentials;
+import Beans.Roles;
+import Beans.ServiceEngineerDetails;
 
 public interface AdminDAOInterface {
 

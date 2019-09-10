@@ -1,4 +1,4 @@
-package com.example.ServiceTicketResolutionSystem;
+package Controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import BeanClasses.Departments;
-import BeanClasses.LoginCredentials;
-import BeanClasses.Roles;
-import BeanClasses.ServiceEngineerDetails;
+import Beans.Departments;
+import Beans.LoginCredentials;
+import Beans.Roles;
+import Beans.ServiceEngineerDetails;
 
 @Controller
 public class AdminController {
@@ -29,8 +29,8 @@ public class AdminController {
 	Environment environment;
 
 	/*
-	 * Gets invoked when logout button is pressed by the admin,
-	 * the session is invalidated and the admin is redirected to the login page
+	 * Gets invoked when logout button is pressed by the admin, the session is
+	 * invalidated and the admin is redirected to the login page
 	 */
 	@RequestMapping(value = "/adminLogout")
 	public String Logout(HttpSession session) {
@@ -61,7 +61,8 @@ public class AdminController {
 	}
 
 	/*
-	 * Redirects the admin to the user registration page where in the admin can register a user
+	 * Redirects the admin to the user registration page where in the admin can
+	 * register a user
 	 */
 	@RequestMapping(value = "/moveToUserRegistrationPage")
 	public String directToUserRegistrationPage() {
@@ -69,10 +70,10 @@ public class AdminController {
 	}
 
 	/*
-	 * It is invoked when the admin clicks register service engineer,
-	 * It gets the departments for service engineer registration form
-	 * where in the admin can select the department required for the service engineer
-	 * and redirects to Service engineer registration form
+	 * It is invoked when the admin clicks register service engineer, It gets the
+	 * departments for service engineer registration form where in the admin can
+	 * select the department required for the service engineer and redirects to
+	 * Service engineer registration form
 	 */
 	@RequestMapping(value = "/getDepartmentsForServiceEngineer")
 	public ModelAndView getDepartmentsForServiceEngineerRegistration() {

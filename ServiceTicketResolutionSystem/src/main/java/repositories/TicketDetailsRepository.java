@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-import BeanClasses.LoginCredentials;
-import BeanClasses.TicketDetails;
+import Beans.LoginCredentials;
+import Beans.TicketDetails;
 
 public interface TicketDetailsRepository extends JpaRepository<TicketDetails, String> {
 

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import BeanClasses.Priorities;
+import Beans.Priorities;
 
 public interface PrioritiesRepository extends JpaRepository<Priorities, Integer> {
 

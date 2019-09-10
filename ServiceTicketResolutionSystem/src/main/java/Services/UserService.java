@@ -1,4 +1,4 @@
-package DAOClasses;
+package Services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import BeanClasses.Departments;
-import BeanClasses.Priorities;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
+import Beans.Departments;
+import Beans.Priorities;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
 import Interfaces.UserDAOInterface;
 import repositories.DepartmentsRepository;
 import repositories.PrioritiesRepository;
@@ -17,7 +17,7 @@ import repositories.ServiceEngineerDetailsRepository;
 import repositories.TicketDetailsRepository;
 
 @Service
-public class UserDAO implements UserDAOInterface{
+public class UserService implements UserDAOInterface {
 
 	@Autowired
 	DepartmentsRepository departmentsRepository;
@@ -71,7 +71,6 @@ public class UserDAO implements UserDAOInterface{
 				ticketDetailsRepository.save(changeStatus);
 			}
 
-			details2.setCurrentHighPriorityTicketID(details.getTicketID());
 			details.setTicketStatus("InProgress");
 
 			Optional<Priorities> optionalPriorities = prioritiesRepository
@@ -84,6 +83,7 @@ public class UserDAO implements UserDAOInterface{
 		if (details.getRequestedEndDate().equals(""))
 			details.setRequestedEndDate(null);
 		ticketDetailsRepository.save(details);
+		details2.setCurrentHighPriorityTicketID(details.getTicketID());
 		serviceEngineerDetailsRepository.save(details2);
 
 	}

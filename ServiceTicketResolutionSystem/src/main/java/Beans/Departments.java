@@ -1,4 +1,4 @@
-package BeanClasses;
+package Beans;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

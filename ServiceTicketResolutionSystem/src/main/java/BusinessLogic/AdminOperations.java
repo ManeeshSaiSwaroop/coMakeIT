@@ -1,22 +1,20 @@
-package BusinessClasses;
+package BusinessLogic;
 
 import java.util.List;
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import BeanClasses.Departments;
-import BeanClasses.LoginCredentials;
-import BeanClasses.Roles;
-import BeanClasses.ServiceEngineerDetails;
-import DAOClasses.AdminDAO;
+import Beans.Departments;
+import Beans.LoginCredentials;
+import Beans.Roles;
+import Beans.ServiceEngineerDetails;
+import Services.AdminService;
 
 @Component
 public class AdminOperations {
 
 	@Autowired
-	AdminDAO dao;
+	AdminService dao;
 
 	public String addUser(LoginCredentials user) {
 		return dao.registerUser(user);
@@ -27,18 +25,8 @@ public class AdminOperations {
 	}
 
 	public String insertIntoServiceEngineerDetails(ServiceEngineerDetails engineerDetails) {
-		engineerDetails.setID(generateServiceEngineerID());
 		dao.insertIntoServiceEngineerDetails(engineerDetails);
 		return "done";
-	}
-
-	/*
-	 * Generates serviceEngineer ID
-	 */
-	public long generateServiceEngineerID() {
-		long a = (long) Math.pow(10, 10);
-		a = a + (long) (new Random().nextInt(999999999));
-		return a;
 	}
 
 	public List<Roles> getRoles() {

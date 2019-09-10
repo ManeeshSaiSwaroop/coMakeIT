@@ -1,4 +1,4 @@
-package com.example.ServiceTicketResolutionSystem;
+package Rest;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import BeanClasses.LoginCredentials;
-import BeanClasses.ServiceEngineerDetails;
-import BeanClasses.TicketDetails;
-import BusinessClasses.ServiceEngineerOperations;
+import Beans.LoginCredentials;
+import Beans.ServiceEngineerDetails;
+import Beans.TicketDetails;
+import BusinessLogic.ServiceEngineerOperations;
 
 @RestController
 @RequestMapping("/serviceEngineer")

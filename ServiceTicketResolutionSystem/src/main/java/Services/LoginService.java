@@ -1,14 +1,15 @@
-package DAOClasses;
+package Services;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import BeanClasses.LoginCredentials;
+
+import Beans.LoginCredentials;
 import Interfaces.LoginDAOInterface;
 import repositories.LoginCredentialsRepository;
 
 @Service
-public class LoginDAO implements LoginDAOInterface{
+public class LoginService implements LoginDAOInterface {
 
 	@Autowired
 	LoginCredentialsRepository credentialsRepository;
