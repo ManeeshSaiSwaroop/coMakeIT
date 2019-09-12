@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "BusinessLogic", "Services", "com.coMakeIT.ServiceTicketResolutionSystem" , "Controllers", "Rest"})
-@EntityScan(basePackages = { "Beans" })
-@EnableJpaRepositories(basePackages = { "repositories" })
+@ComponentScan(basePackages = { "business", "service", "com.coMakeIT.ServiceTicketResolutionSystem" , "controller", "rest"})
+@EntityScan(basePackages = { "bean" })
+@EnableJpaRepositories(basePackages = { "repository" })
 public class ServiceTicketResolutionSystemApplication {
 
 	public static void main(String[] args) {
