@@ -93,7 +93,7 @@ td, th {
 	<br>
 	<br>
 
-	<a href='resolveTickets'><button>ResolveTickets</button></a>
+	<a href='resolveTicket'><button>ResolveTickets</button></a>
 	<a href='changePriority'><button>ChangePriority</button></a>
 
 	<%

@@ -35,4 +35,13 @@ public class LoginController {
 		mv.addObject("message", message);
 		return mv;
 	}
+	
+	/*
+	 * It is invoked when user clicks on logout and then the session is invalidated
+	 */
+	@RequestMapping(value = "/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "index";
+	}
 }

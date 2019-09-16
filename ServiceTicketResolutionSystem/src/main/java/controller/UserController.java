@@ -35,8 +35,8 @@ public class UserController {
 	public ModelAndView ticketRaised() {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url1 = "http://localhost:" + port + "/user/getDepartments";
-		final String url2 = "http://localhost:" + port + "/user/getPriorities";
+		final String url1 = "http://localhost:" + port + "/user/departments";
+		final String url2 = "http://localhost:" + port + "/user/priorities";
 		ResponseEntity<List<Departments>> departmentsResponse = restTemplate.exchange(url1, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Departments>>() {
 				});
@@ -54,7 +54,7 @@ public class UserController {
 	/*
 	 * Assigns a service engineer for the ticket raised by the user
 	 */
-	@RequestMapping(value = "/assignServiceEngineer")
+	@RequestMapping(value = "/assignTicket")
 	public ModelAndView assignServiceEngineer(HttpServletRequest request, HttpServletResponse response,
 			HttpSession session) {
 		String port = environment.getProperty("local.server.port");
@@ -73,7 +73,7 @@ public class UserController {
 		priorities.setPriorityID(Integer.parseInt(request.getParameter("TicketPriority")));
 		ticketDetails.setPriorities(priorities);
 		ticketDetails.setCredentials(credentials);
-		final String url = "http://localhost:" + port + "/user/assignServiceEngineer";
+		final String url = "http://localhost:" + port + "/user/assignTicket";
 		String message = restTemplate.postForObject(url, ticketDetails, String.class);
 		ModelAndView mv = new ModelAndView("/UserHome");
 		mv.addObject("message", message);
@@ -84,7 +84,7 @@ public class UserController {
 	 * All the user tickets are extracted and forwarded to userTickets.jsp where he
 	 * can view his tickets
 	 */
-	@RequestMapping(value = "/viewTickets")
+	@RequestMapping(value = "/tickets")
 	public ModelAndView viewTickets(HttpSession session) {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
@@ -92,7 +92,7 @@ public class UserController {
 		LoginCredentials credentials = new LoginCredentials();
 		credentials.setUsername((String) session.getAttribute("username"));
 		ticketDetails.setCredentials(credentials);
-		final String url = "http://localhost:" + port + "/user/getTickets";
+		final String url = "http://localhost:" + port + "/user/tickets";
 		HttpEntity<TicketDetails> requestEntity = new HttpEntity<>(ticketDetails);
 		ResponseEntity<List<TicketDetails>> ticketsResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
 				new ParameterizedTypeReference<List<TicketDetails>>() {
@@ -101,15 +101,6 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("/UserTickets");
 		mv.addObject("userTickets", userTickets);
 		return mv;
-	}
-
-	/*
-	 * It is invoked when user clicks on logout and the session is invalidated
-	 */
-	@RequestMapping(value = "/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "index";
 	}
 
 }

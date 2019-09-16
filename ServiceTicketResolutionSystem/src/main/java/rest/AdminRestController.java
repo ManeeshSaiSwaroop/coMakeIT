@@ -24,43 +24,43 @@ public class AdminRestController {
 		return adminOperations.addUser(credentials);
 	}
 
-	@RequestMapping(value = "/registerServiceEngineerLoginCredentials")
+	@RequestMapping(value = "/registerServiceEngineer1")
 	public String addServiceEngineer(@RequestBody LoginCredentials credentials) {
 		return adminOperations.addServiceEngineer(credentials);
 	}
 
-	@RequestMapping(value = "/registerServiceEngineerserviceEngineerDetails")
+	@RequestMapping(value = "/registerServiceEngineer2")
 	public String addServiceEngineerIntoServiceEngineerDetails(
 			@RequestBody ServiceEngineerDetails serviceEngineerDetails) {
 		return adminOperations.insertIntoServiceEngineerDetails(serviceEngineerDetails);
 	}
 
-	@RequestMapping(value = "/getRoles")
+	@RequestMapping(value = "/roles")
 	public List<Roles> getRoles() {
 		return adminOperations.getRoles();
 	}
 
-	@RequestMapping(value = "/getUsers")
+	@RequestMapping(value = "/users")
 	public List<LoginCredentials> getUsers() {
 		return adminOperations.getUsers();
 	}
 
-	@RequestMapping(value = "/getServiceEngineers")
+	@RequestMapping(value = "/serviceEngineers")
 	public List<ServiceEngineerDetails> getServiceEngineerDetails() {
 		return adminOperations.getServiceEngineerDetails();
 	}
 
-	@RequestMapping(value = "/DeleteUser")
+	@RequestMapping(value = "/deleteUser")
 	public String deleteUser(@RequestBody LoginCredentials credentials) {
 		return adminOperations.deleteUser(credentials);
 	}
 
-	@RequestMapping(value = "/DeleteServiceEngineer")
+	@RequestMapping(value = "/deleteServiceEngineer")
 	public String deleteServiceEngineer(@RequestBody ServiceEngineerDetails serviceEngineerDetails) {
 		return adminOperations.deleteServiceEngineer(serviceEngineerDetails);
 	}
 
-	@RequestMapping(value = "/AddDepartment")
+	@RequestMapping(value = "/addDepartment")
 	public String addDepartment(@RequestBody Departments department) {
 		return adminOperations.addDepartment(department);
 	}

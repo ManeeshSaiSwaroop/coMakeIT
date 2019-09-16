@@ -46,7 +46,7 @@ public class ServiceEngineerOperations {
 	 * priority and return the credentials object to sortOutStatus Check
 	 * sortOutStatus to know how it works
 	 */
-	public String updateTicketPriority(TicketDetails ticketDetails) {
+	public String updateTicketPriority(TicketDetails ticketDetails) {		
 		if (dao.checkIfTicketExists(ticketDetails)) {
 			sortOutStatus(dao.updateTicketPriority(ticketDetails));
 			return "Priority of the Mentioned Ticket has been updated";

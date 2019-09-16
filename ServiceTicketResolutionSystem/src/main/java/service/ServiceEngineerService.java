@@ -120,6 +120,7 @@ public class ServiceEngineerService implements ServiceEngineerDAOInterface {
 				.findById(ticketDetails.getPriorities().getPriorityID());
 		Priorities priorities = optionalPriorities.get();
 		ticketDetails2.setPriorities(priorities);
+		String ticketStatus = ticketDetails2.getTicketStatus();
 		ticketDetails2.setTicketStatus("Pending");
 		Optional<ServiceEngineerDetails> optionalEngineerDetails = serviceEngineerDetailsRepository
 				.findById(ticketDetails2.getDetails().getID());
@@ -127,8 +128,10 @@ public class ServiceEngineerService implements ServiceEngineerDAOInterface {
 		if (engineerDetails.getCurrentHighPriorityTicketID().equals(ticketDetails2.getTicketID())) {
 			engineerDetails.setPriorities(priorities);
 			ticketDetails2.setDetails(engineerDetails);
-		} else {
+		} else if (!ticketStatus.equals("Closed")) {
 			changeToPending(engineerDetails.getCurrentHighPriorityTicketID(), ticketDetails2.getDetails().getID());
+		} else {
+			ticketDetails2.setTicketStatus("Closed");
 		}
 		ticketDetailsRepository.save(ticketDetails2);
 		Optional<LoginCredentials> credentials = loginCredentialsRepository

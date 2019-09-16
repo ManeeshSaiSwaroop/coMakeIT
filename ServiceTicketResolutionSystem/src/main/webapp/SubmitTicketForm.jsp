@@ -27,7 +27,7 @@
 <title>TIcket Submission Form</title>
 </head>
 <body>
-	<form action="assignServiceEngineer" onsubmit="return checkImpFields()"
+	<form action="assignTicket" onsubmit="return checkImpFields()"
 		name="submitForm" method="post">
 		*Department:<select name="Department">
 			<%

@@ -19,27 +19,27 @@ public class ServiceEngineerRestController {
 	@Autowired
 	ServiceEngineerOperations engineerOperations;
 
-	@RequestMapping(value = "/getTickets", method = RequestMethod.POST)
+	@RequestMapping(value = "/tickets", method = RequestMethod.POST)
 	public List<TicketDetails> getServiceEngineerTickets(@RequestBody LoginCredentials credentials) {
 		return engineerOperations.getServiceEngineerTickets(credentials);
 	}
 
-	@RequestMapping(value = "/getAverageSeverity", method = RequestMethod.GET)
+	@RequestMapping(value = "/averageSeverity", method = RequestMethod.GET)
 	public List<String> calculateAverageSeverity() {
 		return engineerOperations.calculateAverageSeverity();
 	}
 
-	@RequestMapping(value = "/getReportStatistics", method = RequestMethod.GET)
+	@RequestMapping(value = "/reportStatistics", method = RequestMethod.GET)
 	public List<String> calculateReportStatistics() {
 		return engineerOperations.calculateReportStatisticsPerServiceEngineer();
 	}
 
-	@RequestMapping(value = "/getServiceEngineers", method = RequestMethod.GET)
+	@RequestMapping(value = "/serviceEngineers", method = RequestMethod.GET)
 	public List<ServiceEngineerDetails> getServiceEngineers() {
 		return engineerOperations.getServiceEngineers();
 	}
 
-	@RequestMapping(value = "/getAgingOfOpenTickets", method = RequestMethod.POST)
+	@RequestMapping(value = "/aging", method = RequestMethod.POST)
 	public List<Object[]> getAgingList(@RequestBody LoginCredentials credentials) {
 		return engineerOperations.getAgingList(credentials);
 	}
@@ -49,7 +49,7 @@ public class ServiceEngineerRestController {
 		return engineerOperations.closeTicket(credentials);
 	}
 
-	@RequestMapping(value = "/updatePriorityAndStatus", method = RequestMethod.POST)
+	@RequestMapping(value = "/updatePriority", method = RequestMethod.POST)
 	public String updateTicketAndStatus(@RequestBody TicketDetails ticketDetails) {
 		return engineerOperations.updateTicketPriority(ticketDetails);
 	}

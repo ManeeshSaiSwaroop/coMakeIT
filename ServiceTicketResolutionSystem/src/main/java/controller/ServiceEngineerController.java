@@ -27,13 +27,13 @@ public class ServiceEngineerController {
 	/*
 	 * It is invoked when service engineer clicks on view tickets
 	 */
-	@RequestMapping("/viewServiceEngineerTickets")
+	@RequestMapping("/assignedTickets")
 	public ModelAndView viewTickets(HttpSession session) {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
 		LoginCredentials credentials = new LoginCredentials();
 		credentials.setUsername((String) session.getAttribute("username"));
-		final String url = "http://localhost:" + port + "/serviceEngineer/getTickets";
+		final String url = "http://localhost:" + port + "/serviceEngineer/tickets";
 		HttpEntity<LoginCredentials> requestEntity = new HttpEntity<>(credentials);
 		ResponseEntity<List<TicketDetails>> ticketsResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
 				new ParameterizedTypeReference<List<TicketDetails>>() {
@@ -48,16 +48,16 @@ public class ServiceEngineerController {
 	/*
 	 * It is invoked when service engineer clicks on checkAverageSeverity
 	 */
-	@RequestMapping("/checkAverageSeverity")
+	@RequestMapping("/averageSeverity")
 	public ModelAndView getAverageSeverity() {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url1 = "http://localhost:" + port + "/serviceEngineer/getAverageSeverity";
+		final String url1 = "http://localhost:" + port + "/serviceEngineer/averageSeverity";
 		ResponseEntity<List<String>> ticketsResponse = restTemplate.exchange(url1, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<String>>() {
 				});
 		List<String> averageListPerPriority = ticketsResponse.getBody();
-		final String url2 = "http://localhost:" + port + "/user/getPriorities";
+		final String url2 = "http://localhost:" + port + "/user/priorities";
 		ResponseEntity<List<Priorities>> prioritiesResponse = restTemplate.exchange(url2, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Priorities>>() {
 				});
@@ -72,16 +72,16 @@ public class ServiceEngineerController {
 	/*
 	 * It is invoked when service engineer clicks on checkReportStatistics
 	 */
-	@RequestMapping(value = "/checkReportStatistics")
+	@RequestMapping(value = "/reportStatistics")
 	public ModelAndView getReportStatistics() {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url1 = "http://localhost:" + port + "/serviceEngineer/getReportStatistics";
+		final String url1 = "http://localhost:" + port + "/serviceEngineer/reportStatistics";
 		ResponseEntity<List<String>> statisticsResponse = restTemplate.exchange(url1, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<String>>() {
 				});
 		List<String> statisticsPerServiceEngineer = statisticsResponse.getBody();
-		final String url2 = "http://localhost:" + port + "/serviceEngineer/getServiceEngineers";
+		final String url2 = "http://localhost:" + port + "/serviceEngineer/serviceEngineers";
 		ResponseEntity<List<ServiceEngineerDetails>> engineersResponse = restTemplate.exchange(url2, HttpMethod.GET,
 				null, new ParameterizedTypeReference<List<ServiceEngineerDetails>>() {
 				});
@@ -96,14 +96,14 @@ public class ServiceEngineerController {
 	/*
 	 * It is invoked when service engineer clicks on checkAging
 	 */
-	@RequestMapping(value = "/checkAging")
+	@RequestMapping(value = "/aging")
 	public ModelAndView checkAging(HttpSession session) {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
 		LoginCredentials credentials = new LoginCredentials();
 		credentials.setUsername((String) session.getAttribute("username"));
 		HttpEntity<LoginCredentials> requestEntity = new HttpEntity<>(credentials);
-		final String url1 = "http://localhost:" + port + "/serviceEngineer/getAgingOfOpenTickets";
+		final String url1 = "http://localhost:" + port + "/serviceEngineer/aging";
 		ResponseEntity<List<Object[]>> agingResponse = restTemplate.exchange(url1, HttpMethod.POST, requestEntity,
 				new ParameterizedTypeReference<List<Object[]>>() {
 				});
@@ -118,13 +118,13 @@ public class ServiceEngineerController {
 	 * It is invoked when service engineer clicks on resolve tickets where in only
 	 * the ticket InProgress will be showed
 	 */
-	@RequestMapping(value = "/resolveTickets")
+	@RequestMapping(value = "/resolveTicket")
 	public ModelAndView resolveTickets(HttpSession session) {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
 		LoginCredentials credentials = new LoginCredentials();
 		credentials.setUsername((String) session.getAttribute("username"));
-		final String url = "http://localhost:" + port + "/serviceEngineer/getTickets";
+		final String url = "http://localhost:" + port + "/serviceEngineer/tickets";
 		HttpEntity<LoginCredentials> requestEntity = new HttpEntity<>(credentials);
 		ResponseEntity<List<TicketDetails>> ticketsResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
 				new ParameterizedTypeReference<List<TicketDetails>>() {
@@ -162,7 +162,7 @@ public class ServiceEngineerController {
 	public ModelAndView changePriority() {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url = "http://localhost:" + port + "/user/getPriorities";
+		final String url = "http://localhost:" + port + "/user/priorities";
 		ResponseEntity<List<Priorities>> prioritiesResponse = restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Priorities>>() {
 				});
@@ -180,20 +180,10 @@ public class ServiceEngineerController {
 		String port = environment.getProperty("local.server.port");
 		ticketDetails.setPriorities(priorities);
 		RestTemplate restTemplate = new RestTemplate();
-		final String url = "http://localhost:" + port + "/serviceEngineer/updatePriorityAndStatus";
+		final String url = "http://localhost:" + port + "/serviceEngineer/updatePriority";
 		String message = restTemplate.postForObject(url, ticketDetails, String.class);
 		ModelAndView mv = new ModelAndView("/ServiceEngineerHome");
 		mv.addObject("message", message);
 		return mv;
-	}
-
-	/*
-	 * It is invoked when the service engineer clicks on logout and the session is
-	 * invalidated
-	 */
-	@RequestMapping(value = "/Logout")
-	public String Logout(HttpSession session) {
-		session.invalidate();
-		return "index";
 	}
 }

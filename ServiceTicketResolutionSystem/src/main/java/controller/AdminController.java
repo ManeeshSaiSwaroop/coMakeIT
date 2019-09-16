@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.env.Environment;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-
 import bean.Departments;
 import bean.LoginCredentials;
 import bean.Roles;
@@ -27,19 +25,9 @@ public class AdminController {
 	Environment environment;
 
 	/*
-	 * Gets invoked when logout button is pressed by the admin, the session is
-	 * invalidated and the admin is redirected to the login page
-	 */
-	@RequestMapping(value = "/adminLogout")
-	public String Logout(HttpSession session) {
-		session.invalidate();
-		return "index";
-	}
-
-	/*
 	 * It is invoked when admin is registering a user
 	 */
-	@RequestMapping(value = "/RegisterUser")
+	@RequestMapping(value = "/registerUser")
 	public ModelAndView registerUser(LoginCredentials credentials) {
 		RestTemplate restTemplate = new RestTemplate();
 		String port = environment.getProperty("local.server.port");
@@ -57,7 +45,7 @@ public class AdminController {
 	 * Redirects the admin to the user registration page where in the admin can
 	 * register a user
 	 */
-	@RequestMapping(value = "/moveToUserRegistrationPage")
+	@RequestMapping(value = "/userRegistration")
 	public String directToUserRegistrationPage() {
 		return "Register";
 	}
@@ -68,11 +56,11 @@ public class AdminController {
 	 * select the department required for the service engineer and redirects to
 	 * Service engineer registration form
 	 */
-	@RequestMapping(value = "/getDepartmentsForServiceEngineer")
+	@RequestMapping(value = "/engineerDepartments")
 	public ModelAndView getDepartmentsForServiceEngineerRegistration() {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url = "http://localhost:" + port + "/user/getDepartments";
+		final String url = "http://localhost:" + port + "/user/departments";
 		ResponseEntity<List<Departments>> departmentsResponse = restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Departments>>() {
 				});
@@ -85,20 +73,20 @@ public class AdminController {
 	/*
 	 * It is invoked when the admin wants to register a service engineer
 	 */
-	@RequestMapping(value = "/RegisterServiceEngineer")
+	@RequestMapping(value = "/registerServiceEngineer")
 	public ModelAndView registerServiceEngineer(LoginCredentials credentials, Departments departments) {
 		String port = environment.getProperty("local.server.port");
 		ServiceEngineerDetails serviceEngineerDetails = new ServiceEngineerDetails();
 		serviceEngineerDetails.setCredentials(credentials);
 		serviceEngineerDetails.setDepartments(departments);
 		RestTemplate restTemplate = new RestTemplate();
-		final String url1 = "http://localhost:" + port + "/admin/registerServiceEngineerLoginCredentials";
-		final String url2 = "http://localhost:" + port + "/admin/registerServiceEngineerserviceEngineerDetails";
+		final String url1 = "http://localhost:" + port + "/admin/registerServiceEngineer1";
+		final String url2 = "http://localhost:" + port + "/admin/registerServiceEngineer2";
 		String response = restTemplate.postForObject(url1, credentials, String.class);
 		ModelAndView mv = new ModelAndView("/Admin");
 		if (response.equals("Username already exists, try a different one")) {
 			mv = new ModelAndView("/RegisterServiceEngineer");
-			final String url = "http://localhost:" + port + "/user/getDepartments";
+			final String url = "http://localhost:" + port + "/user/departments";
 			ResponseEntity<List<Departments>> departmentsResponse = restTemplate.exchange(url, HttpMethod.GET, null,
 					new ParameterizedTypeReference<List<Departments>>() {
 					});
@@ -115,11 +103,11 @@ public class AdminController {
 	/*
 	 * Get the roles for viewing that particular role users
 	 */
-	@RequestMapping(value = "/getRolesForViewingUser")
+	@RequestMapping(value = "/userRoles")
 	public ModelAndView getRoles() {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url = "http://localhost:" + port + "/admin/getRoles";
+		final String url = "http://localhost:" + port + "/admin/roles";
 		ResponseEntity<List<Roles>> rolesResponse = restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Roles>>() {
 				});
@@ -137,8 +125,8 @@ public class AdminController {
 	public ModelAndView viewUsers(Roles roles) {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url1 = "http://localhost:" + port + "/admin/getUsers";
-		final String url2 = "http://localhost:" + port + "/admin/getServiceEngineers";
+		final String url1 = "http://localhost:" + port + "/admin/users";
+		final String url2 = "http://localhost:" + port + "/admin/serviceEngineers";
 		List<ServiceEngineerDetails> serviceEngineers = new ArrayList<ServiceEngineerDetails>();
 		List<LoginCredentials> users = new ArrayList<LoginCredentials>();
 		if (roles.getRoleID() == 1) {
@@ -172,7 +160,7 @@ public class AdminController {
 		LoginCredentials credentials = new LoginCredentials();
 		credentials.setUsername(request.getParameter("Delete"));
 		RestTemplate restTemplate = new RestTemplate();
-		final String url = "http://localhost:" + port + "/admin/DeleteUser";
+		final String url = "http://localhost:" + port + "/admin/deleteUser";
 		String message = restTemplate.postForObject(url, credentials, String.class);
 		ModelAndView mv = new ModelAndView("/Admin");
 		mv.addObject("message", message);
@@ -188,7 +176,7 @@ public class AdminController {
 		ServiceEngineerDetails serviceEngineerDetails = new ServiceEngineerDetails();
 		serviceEngineerDetails.setID(Long.parseLong(request.getParameter("Delete")));
 		RestTemplate restTemplate = new RestTemplate();
-		final String url = "http://localhost:" + port + "/admin/DeleteServiceEngineer";
+		final String url = "http://localhost:" + port + "/admin/deleteServiceEngineer";
 		String message = restTemplate.postForObject(url, serviceEngineerDetails, String.class);
 		ModelAndView mv = new ModelAndView("/Admin");
 		mv.addObject("message", message);
@@ -198,11 +186,11 @@ public class AdminController {
 	/*
 	 * It is for admin so that he can view departments and add departments needed
 	 */
-	@RequestMapping(value = "/getDepartmentsForAddingDepartments")
+	@RequestMapping(value = "/departments")
 	public ModelAndView getDepartmentsForAddingDepartments() {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url = "http://localhost:" + port + "/user/getDepartments";
+		final String url = "http://localhost:" + port + "/user/departments";
 		ResponseEntity<List<Departments>> departmentsResponse = restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Departments>>() {
 				});
@@ -219,12 +207,12 @@ public class AdminController {
 	public ModelAndView addDepartment(Departments department) {
 		String port = environment.getProperty("local.server.port");
 		RestTemplate restTemplate = new RestTemplate();
-		final String url = "http://localhost:" + port + "/admin/AddDepartment";
+		final String url = "http://localhost:" + port + "/admin/addDepartment";
 		String message = restTemplate.postForObject(url, department, String.class);
 		ModelAndView mv = new ModelAndView("/Admin");
 		if (message.equals("departmentID already exists") || message.equals("departmentName already exists")) {
 			mv = new ModelAndView("/AdminAlterationPage");
-			final String url2 = "http://localhost:" + port + "/user/getDepartments";
+			final String url2 = "http://localhost:" + port + "/user/departments";
 			ResponseEntity<List<Departments>> departmentsResponse = restTemplate.exchange(url2, HttpMethod.GET, null,
 					new ParameterizedTypeReference<List<Departments>>() {
 					});

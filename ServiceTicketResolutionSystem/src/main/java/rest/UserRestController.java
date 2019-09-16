@@ -19,23 +19,23 @@ public class UserRestController {
 	@Autowired
 	UserOperations userOperations;
 
-	@RequestMapping(value = "/getDepartments", method = RequestMethod.GET)
+	@RequestMapping(value = "/departments", method = RequestMethod.GET)
 	public List<Departments> getDepartments() {
 		return userOperations.getDepartments();
 	}
 
-	@RequestMapping(value = "/getPriorities", method = RequestMethod.GET)
+	@RequestMapping(value = "/priorities", method = RequestMethod.GET)
 	public List<Priorities> getPriorities() {
 		return userOperations.getPriorities();
 	}
 
-	@RequestMapping(value = "/assignServiceEngineer", method = RequestMethod.POST)
+	@RequestMapping(value = "/assignTicket", method = RequestMethod.POST)
 	public String assignServiceEngineer(@RequestBody TicketDetails ticketDetails) {
 		userOperations.submitTicket(ticketDetails);
 		return "Ticket raised successfully";
 	}
 
-	@RequestMapping(value = "/getTickets", method = RequestMethod.POST)
+	@RequestMapping(value = "/tickets", method = RequestMethod.POST)
 	public List<TicketDetails> getUserTickets(@RequestBody TicketDetails ticketDetails) {
 		return userOperations.getUserTickets(ticketDetails);
 	}
