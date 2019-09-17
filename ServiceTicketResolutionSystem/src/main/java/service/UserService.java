@@ -9,14 +9,14 @@ import bean.Departments;
 import bean.Priorities;
 import bean.ServiceEngineerDetails;
 import bean.TicketDetails;
-import interfaces.UserDAOInterface;
+import interfaces.UserServiceInterface;
 import repository.DepartmentsRepository;
 import repository.PrioritiesRepository;
 import repository.ServiceEngineerDetailsRepository;
 import repository.TicketDetailsRepository;
 
 @Service
-public class UserService implements UserDAOInterface {
+public class UserService implements UserServiceInterface {
 
 	@Autowired
 	DepartmentsRepository departmentsRepository;

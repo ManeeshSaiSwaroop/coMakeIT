@@ -13,14 +13,14 @@ import bean.LoginCredentials;
 import bean.Priorities;
 import bean.ServiceEngineerDetails;
 import bean.TicketDetails;
-import interfaces.ServiceEngineerDAOInterface;
+import interfaces.ServiceEngineerServiceInterface;
 import repository.LoginCredentialsRepository;
 import repository.PrioritiesRepository;
 import repository.ServiceEngineerDetailsRepository;
 import repository.TicketDetailsRepository;
 
 @Service
-public class ServiceEngineerService implements ServiceEngineerDAOInterface {
+public class ServiceEngineerService implements ServiceEngineerServiceInterface {
 
 	@Autowired
 	TicketDetailsRepository ticketDetailsRepository;

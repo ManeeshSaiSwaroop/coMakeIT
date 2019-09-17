@@ -11,7 +11,7 @@ import bean.Priorities;
 import bean.Roles;
 import bean.ServiceEngineerDetails;
 import bean.TicketDetails;
-import interfaces.AdminDAOInterface;
+import interfaces.AdminServiceInterface;
 import repository.DepartmentsRepository;
 import repository.LoginCredentialsRepository;
 import repository.PrioritiesRepository;
@@ -20,7 +20,7 @@ import repository.ServiceEngineerDetailsRepository;
 import repository.TicketDetailsRepository;
 
 @Service
-public class AdminService implements AdminDAOInterface {
+public class AdminService implements AdminServiceInterface {
 
 	@Autowired
 	RolesRepository rolesRepository;

@@ -12,7 +12,7 @@ public class LoginOperations {
 	@Autowired
 	LoginService dao;
 
-	public String validate(LoginCredentials credentials){
+	public String validate(LoginCredentials credentials) throws Exception{
 		return dao.validate(credentials);
 	}
 

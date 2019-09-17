@@ -7,7 +7,7 @@ import bean.LoginCredentials;
 import bean.Roles;
 import bean.ServiceEngineerDetails;
 
-public interface AdminDAOInterface {
+public interface AdminServiceInterface {
 
 	public String registerUser(LoginCredentials user);
 

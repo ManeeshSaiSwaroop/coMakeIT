@@ -17,7 +17,7 @@ public class LoginRestController {
 	LoginOperations operations;
 
 	@RequestMapping(value = "/validate", method = RequestMethod.POST)
-	public String sample(@RequestBody LoginCredentials user) {
+	public String sample(@RequestBody LoginCredentials user) throws Exception {
 		return operations.validate(user);
 	}
 

@@ -7,7 +7,7 @@ import bean.Priorities;
 import bean.ServiceEngineerDetails;
 import bean.TicketDetails;
 
-public interface ServiceEngineerDAOInterface {
+public interface ServiceEngineerServiceInterface {
 
 	public List<TicketDetails> getServiceEngineerTickets(LoginCredentials credentials);
 	

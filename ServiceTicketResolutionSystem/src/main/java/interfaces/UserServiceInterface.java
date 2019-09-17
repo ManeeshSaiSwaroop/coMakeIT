@@ -7,7 +7,7 @@ import bean.Priorities;
 import bean.ServiceEngineerDetails;
 import bean.TicketDetails;
 
-public interface UserDAOInterface {
+public interface UserServiceInterface {
 
 	public List<Departments> getDepartments();
 	

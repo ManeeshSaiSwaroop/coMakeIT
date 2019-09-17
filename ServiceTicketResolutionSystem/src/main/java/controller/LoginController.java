@@ -23,19 +23,25 @@ public class LoginController {
 		session.setAttribute("username", credentials.getUsername());
 		RestTemplate restTemplate = new RestTemplate();
 		final String url = "http://localhost:" + port + "/Login/validate";
-		String message = restTemplate.postForObject(url, credentials, String.class);
 		ModelAndView mv = new ModelAndView("/index");
-		if (message.equals("User")) {
-			mv = new ModelAndView("/UserHome");
-		} else if (message.equals("ServiceEngineer")) {
-			mv = new ModelAndView("/ServiceEngineerHome");
-		} else if (message.equals("Admin")) {
-			mv = new ModelAndView("/Admin");
+		String message = "";
+		try {
+			message = restTemplate.postForObject(url, credentials, String.class);
+			if (message.equals("User")) {
+				mv = new ModelAndView("/UserHome");
+			} else if (message.equals("ServiceEngineer")) {
+				mv = new ModelAndView("/ServiceEngineerHome");
+			} else if (message.equals("Admin")) {
+				mv = new ModelAndView("/Admin");
+			}
+			mv.addObject("message", message);
+		} catch(Exception e) {
+			
+				mv.addObject("message", "You have entered wrong username / password");
 		}
-		mv.addObject("message", message);
 		return mv;
 	}
-	
+
 	/*
 	 * It is invoked when user clicks on logout and then the session is invalidated
 	 */
