@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>Ticket ID</th>
+                <th>Date Of Issue</th>
+                <th>Requested End Date</th>
+                <th>Problem Description</th>
+                <th>Ticket Status</th>
+                <th>Ticket Priority</th>
+                <th>Customer Username</th>
+                <th>Start Time</th>
+                <th>Completion Time</th>
+            </tr>
+            <tr *ngFor="let ticket of serviceEngineerTickets">
+                <td>{{ticket.ticketID}}</td>
+                <td>{{ticket.dateOfIssue | date  : 'full'  }}</td>
+                <td *ngIf="ticket.requestedEndDate">{{ticket.requestedEndDate | date  : 'full' }}</td>
+                <td *ngIf="!ticket.requestedEndDate"> ----- </td>
+                <td>{{ticket.problemDescription}}</td>
+                <td>{{ticket.ticketStatus}}</td>
+                <td>{{ticket.priorities.priorityName}}</td>
+                <td>{{ticket.credentials.username}}</td>
+                <td *ngIf="!ticket.startTime"> ----- </td>
+                <td *ngIf="ticket.startTime">{{ticket.startTime | date  : 'full' }}</td>
+                <td *ngIf="!ticket.completionTime"> ----- </td>
+                <td *ngIf="ticket.completionTime">{{ticket.completionTime | date  : 'full' }}</td>
+            </tr>
+        </table>
+        <button (click)="resolveTicket()">Resolve Ticket</button>
+        <button (click)="changePriority()">Change Priority</button>
+    </div>
+</div>

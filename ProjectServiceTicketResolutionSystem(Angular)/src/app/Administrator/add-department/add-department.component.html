@@ -1,0 +1,17 @@
+<div>
+    <h1>Department Creation Form</h1>
+    <form [formGroup]="departmentCreationForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <div class="col-sm-12">
+                    <input type="text" formControlName="departmentName" placeholder="Department Name">
+                    <div *ngIf="departmentName.invalid && (departmentName.dirty || departmentName.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="departmentName.errors.required">
+                            departmentName is required.
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <input type="submit" [disabled]="!departmentCreationForm.valid">
+    </form>
+</div>

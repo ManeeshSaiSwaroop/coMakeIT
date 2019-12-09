@@ -1,0 +1,58 @@
+<div>
+        <h1>Ticket Submission form</h1>
+        <form [formGroup]="ticketForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+                <div class="form-group" style="text-align: center">
+                        <div class="col-sm-12">
+                                <!-- <label>
+                                        *Department:
+                                </label> -->
+                                <select formControlName="department">
+                                        <option value="" disabled>Select Department</option>
+                                        <option *ngFor="let dept of departments" [value]="dept.departmentID">
+                                                {{dept.departmentName}}</option>
+                                </select>
+                                <div *ngIf="department.invalid && (department.dirty || department.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="department.errors.required">
+                                                department is required.
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="col-sm-12">
+                                <!-- <label>
+                                        *Problem Description:
+                                </label> -->
+                                <textarea rows="4" cols="50" formControlName="problemDescription" placeholder="*Problem Description"></textarea>
+                                <div *ngIf="problemDescription.invalid && (problemDescription.dirty || problemDescription.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="problemDescription.errors.required">
+                                                problemDescription is required.
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="col-sm-12">
+                                <!-- <label>
+                                        *Ticket Priority:
+                                </label> -->
+                                <select formControlName="ticketPriority">
+                                        <option value="" disabled>Select Ticket Priority</option>
+                                        <option *ngFor="let pr of priorities" [value]="pr.priorityID">
+                                                {{pr.priorityName}}</option>
+                                </select>
+                                <div *ngIf="ticketPriority.invalid && (ticketPriority.dirty || ticketPriority.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="ticketPriority.errors.required">
+                                                ticketPriority is required.
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="col-sm-12">
+                                <label>
+                                        Requested End Date:
+                                </label><br>
+                                <input type="datetime-local" formControlName="requestedEndDate">
+                        </div>
+                </div>
+                <input type="submit" [disabled]="!ticketForm.valid">
+        </form>
+</div>

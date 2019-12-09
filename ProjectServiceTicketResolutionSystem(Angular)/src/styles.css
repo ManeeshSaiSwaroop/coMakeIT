@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+table, tr, th, td {
+    font-size: 15px;
+}
+
+tr :nth-child(odd) {
+    background-color: orange
+}
+
+tr :nth-child(even) {
+    background-color: rgb(240, 152, 70)
+}
+
+div {
+    text-align: center
+}
+
+body {
+    background-color: bisque
+}

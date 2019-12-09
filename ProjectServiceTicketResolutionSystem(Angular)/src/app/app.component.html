@@ -1,0 +1,18 @@
+<div *ngIf="login">
+  <app-login (getType)="getRole($event)"></app-login>
+</div>
+<div *ngIf="User">
+  <router-outlet></router-outlet>
+</div>
+<div *ngIf="ServiceEngineer">
+  <router-outlet></router-outlet>
+
+</div>
+<div *ngIf="Admin">
+  <router-outlet></router-outlet>
+
+</div>
+<br><br><br><br>
+<div>
+  <button (click)="logOut()" *ngIf="!login">LogOut</button>
+</div>  
