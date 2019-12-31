@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%
 
-String message = request.getParameter("message"); 
-if(message!=null)
+String message = (String)request.getAttribute("message"); 
+if(message!=null && !message.equals("User"))
 	out.println(message);
 
 %>
@@ -19,7 +19,7 @@ if(message!=null)
 	<h3>Welcome to User Support Portal</h3>
 	<ul>
 		<li><a href="raiseTicket">Submit ticket</a></li>
-		<li><a href="viewTickets">Open and track support tickets</a></li>
+		<li><a href="tickets">Open and track support tickets</a></li>
 	</ul>
 	<a href="logout"><button>LogOut</button></a>
 </body>

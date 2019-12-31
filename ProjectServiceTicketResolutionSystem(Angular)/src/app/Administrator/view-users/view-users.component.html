@@ -1,0 +1,16 @@
+<div>
+    <h1>Viewing users</h1>
+    <form [formGroup]="userTypeGroup" class="form-horizontal" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <div>
+                    <label>
+                        <select formControlName="userType">
+                            <option value="" disabled>Select role</option>
+                            <option *ngFor="let role of roles" [value]="role.roleID">{{role.roleName}}</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+    </form>
+    <app-display-users [roleID] = "[(userTypeGroup.value.userType)]"></app-display-users>
+</div>

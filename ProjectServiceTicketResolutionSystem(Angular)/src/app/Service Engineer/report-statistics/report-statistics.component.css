@@ -1,0 +1,9 @@
+th {
+    background-color: darkkhaki
+}
+
+table, tr, th, td {
+    border: 1px darkslateblue solid;
+    margin-left: 38%;
+    margin-top: 3%;
+}

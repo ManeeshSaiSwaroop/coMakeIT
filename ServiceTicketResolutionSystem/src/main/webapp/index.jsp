@@ -42,8 +42,7 @@ if(message!=null && message.equals("UserDoesNotExist"))
 }
 
 %>
-			<br>
-			<br>Password: <input type="password" name="password"
+			<br> <br>Password: <input type="password" name="password"
 				id="password" required><br>
 			<% 
 

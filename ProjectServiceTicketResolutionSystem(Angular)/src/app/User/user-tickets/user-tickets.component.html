@@ -1,0 +1,26 @@
+<table>
+    <tr>
+        <th>ServiceEngineerID</th>
+        <th>TicketID</th>
+        <th>DateOfIssue</th>
+        <th>RequestedEndDate</th>
+        <th>ProblemDescription</th>
+        <th>TicketPriority</th>
+        <th>TicketStatus</th>
+        <th>StartTime</th>
+        <th>CompletionTime</th>
+    </tr>
+    <tr *ngFor="let ticket of userTix">
+        <td>{{ticket.details.id}}</td>
+        <td>{{ticket.ticketID}}</td>
+        <td>{{ticket.dateOfIssue  | date  : 'full' }}</td>
+        <td *ngIf="ticket.requestedEndDate">{{ticket.requestedEndDate | date  : 'full' }}</td>
+        <td *ngIf="!ticket.requestedEndDate"> ----- </td>
+        <td>{{ticket.problemDescription}}</td>
+        <td>{{ticket.priorities.priorityID}}</td>
+        <td>{{ticket.ticketStatus}}</td>
+        <td *ngIf="ticket.startTime">{{ticket.startTime | date  : 'full' }}</td>
+        <td *ngIf="!ticket.startTime"> ----- </td>
+        <td *ngIf="ticket.completionTime">{{ticket.completionTime | date  : 'full' }}</td>
+        <td *ngIf="!ticket.completionTime"> ----- </td>
+    </tr>

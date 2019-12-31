@@ -4,7 +4,7 @@
 <%
 	String registrationStatus = (String) request.getAttribute("registrationStatus");
 	String message = (String) request.getAttribute("message");
-	if (message != null)
+	if (message != null && !message.equals("Admin"))
 		out.println(message);
 %>
 
@@ -24,15 +24,15 @@
 		}
 	%>
 	<ul>
-		<li><a href="moveToUserRegistrationPage">Add User</a></li>
-		<li><a href="getDepartmentsForServiceEngineer">Add
+		<li><a href="userRegistration">Add User</a></li>
+		<li><a href="engineerDepartments">Add
 				ServiceEngineer</a></li>
-		<li><a href="getRolesForViewingUser">View User</a></li>
-		<li><a href="getDepartmentsForAddingDepartments">Add
+		<li><a href="userRoles">View User</a></li>
+		<li><a href="departments">Add
 				Department</a></li>
 
 	</ul>
-	<a href='adminLogout'><button>LogOut</button></a>
+	<a href='logout'><button>LogOut</button></a>
 
 </body>
 </html>

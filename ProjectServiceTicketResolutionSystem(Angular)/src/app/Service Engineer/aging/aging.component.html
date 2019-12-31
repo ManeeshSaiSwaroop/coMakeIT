@@ -1,0 +1,11 @@
+<div>
+    <table>
+        <tr *ngIf="ageListOfOpenTickets.length>0; else no_open_tickets">
+            <th>Open Ticket ID</th><th>Age</th>
+        </tr>
+        <tr *ngFor = "let age of ageListOfOpenTickets">
+            <td>{{age[0]}}</td><td>{{age[1]}}</td>
+        </tr>
+        <ng-template #no_open_tickets>Currently you don't have any open tickets</ng-template>
+    </table>
+</div>

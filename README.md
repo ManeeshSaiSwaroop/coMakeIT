@@ -40,7 +40,7 @@ g. Per engineer
 ticket is open.
 
 -> Let me explain how it works :
-   Please note that running the sql queries listed in RunThis.txt is necessary for the working of the Project, atleast addition of admin into LoginCredentials table is needed so that the admin can add the users and service engineers as he needs. And addition of the dummy users,  i.e., Deleted and DeletedServiceEngineer is also needed to ensure successful deletion of the user or serviceEngineer when the admin chooses to without any unprecedented behaviour.
+   Please note that running the sql queries listed in RunThis.txt in Database folder which is necessary for the working of the Project, atleast addition of admin into LoginCredentials table is needed so that the admin can add the users and service engineers as he needs. And addition of the dummy users,  i.e., Deleted and DeletedServiceEngineer is also needed to ensure successful deletion of the user or serviceEngineer when the admin chooses to without any unprecedented behaviour.
    
 -> User can submit a ticket and view his submitted tickets.
 -> Service Engineer can work on the tickets assigned to him but he will only be able to work on one ticket at a time ordered    by Priority, requested end date and date of issue. He can also change the priority of any ticket if he thinks it is not      that high of a priority as mentioned and vice versa. He can view the statistics of the company per Severity, check the        statistics per service engineer and also view the aging of his open tickets.

@@ -1,0 +1,38 @@
+<div *ngIf="engineers">
+    
+    <table style="margin-left: 17%">
+        <tr>
+            <th>Service Engineer ID</th>
+            <th>Username</th>
+            <th>Department Name</th>
+            <th>Total Tickets Worked On</th>
+            <th>Current High Priority Ticket ID</th>
+            <th>Current Ticket Priority</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor = "let engineer of serviceEngineerList">
+            <td>{{engineer.id}}</td>
+            <td>{{engineer.credentials.username}}</td>
+            <td>{{engineer.departments.departmentName}}</td>
+            <td>{{engineer.totalTicketsWorkedOn}}</td>
+            <td>{{engineer.currentHighPriorityTicketID}}</td>
+            <td>{{engineer.priorities.priorityName}}</td>
+            <td><button (click)="deleteServiceEngineer(engineer)">Delete</button></td>
+        </tr>
+            
+    </table>
+</div>
+<div *ngIf="users">
+    <table style="margin-left: 41%">
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let user of userList">
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            <td><button (click)="deleteUser(user)">Delete</button></td>
+        </tr>
+    </table>
+</div>

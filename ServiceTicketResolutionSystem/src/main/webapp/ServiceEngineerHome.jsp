@@ -11,21 +11,21 @@
 	<h3>Welcome to Service Engineer Portal</h3>
 	<%
 		String CloseStatus = (String) request.getAttribute("message");
-		if (CloseStatus != null) {
+		if (CloseStatus != null && !CloseStatus.equals("ServiceEngineer")) {
 			out.println(CloseStatus);
 		}
 	%>
 	<ul>
-		<li><a href="viewServiceEngineerTickets">Open, Track and
+		<li><a href="assignedTickets">Open, Track and
 				Solve Tickets submitted to you</a></li>
-		<li><a href="checkAverageSeverity">You can check the average
+		<li><a href="averageSeverity">You can check the average
 				Severity of the Company</a></li>
-		<li><a href="checkReportStatistics">You can also check the
+		<li><a href="reportStatistics">You can also check the
 				report statistics of the average time taken per engineer</a></li>
-		<li><a href="checkAging">And also also check the aging of
+		<li><a href="aging">And also also check the aging of
 				open tickets</a></li>
 	</ul>
-	<a href="Logout"><button>Logout</button></a>
+	<a href="logout"><button>Logout</button></a>
 </body>
 </html>
 <% request.removeAttribute("message"); %>

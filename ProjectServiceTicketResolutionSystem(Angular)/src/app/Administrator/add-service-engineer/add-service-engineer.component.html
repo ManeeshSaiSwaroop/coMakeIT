@@ -1,0 +1,44 @@
+
+<div>
+    <h1>Service Engineer Registration Form</h1>
+    <form [formGroup]="serviceEngineerRegistrationForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+            <div class="form-group" style="text-align: center">
+                <div class="col-sm-12">
+                        <input type="text" formControlName="username" placeholder="Username">
+                        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                                <div *ngIf="username.errors.required">
+                                    username is required.
+                                </div>
+                        </div>
+                </div>
+                <div class="col-sm-12">
+                        <input type="password" formControlName="password" placeholder="Password">
+                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                                <div *ngIf="password.errors.required">
+                                    password is required.
+                                </div>
+                                <div *ngIf="password.errors.pattern">
+                                    password should contain one lower case alphabet, one upper case alphabet, one digit, one special character and should be containing atleast 8 characters
+                                </div>
+                        </div>
+                </div>
+                <div class="col-sm-12">
+                    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+                </div>
+                <div class="col-sm-12">
+                    <label>
+                            <select formControlName="department">
+                                <option value="" disabled>Select Department</option>
+                                <option *ngFor="let dept of departments" [value]="dept.departmentID">{{dept.departmentName}}</option>
+                            </select>
+                            <div *ngIf="department.invalid && (department.dirty || department.touched)" class="alert alert-danger">
+                                    <div *ngIf="deparment.errors.required">
+                                        department is required.
+                                    </div>
+                            </div>
+                    </label>
+                </div>
+            </div>
+            <input type="submit" [disabled]="!serviceEngineerRegistrationForm.valid">
+    </form>
+</div>

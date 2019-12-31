@@ -1,4 +1,4 @@
-<%@page import="BeanClasses.TicketDetails"%>
+<%@page import="bean.TicketDetails"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -93,7 +93,7 @@ td, th {
 	<br>
 	<br>
 
-	<a href='resolveTickets'><button>ResolveTickets</button></a>
+	<a href='resolveTicket'><button>ResolveTickets</button></a>
 	<a href='changePriority'><button>ChangePriority</button></a>
 
 	<%

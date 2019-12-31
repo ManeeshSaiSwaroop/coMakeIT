@@ -1,4 +1,4 @@
-<%@page import="BeanClasses.Departments"%>
+<%@page import="bean.Departments"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -104,7 +104,7 @@ input[type=submit] {
 	<div class="container">
 		<h1 align="center">Registration Page</h1>
 		<br>
-		<form action="RegisterServiceEngineer" name="form" method="Post"
+		<form action="registerServiceEngineer" name="form" method="Post"
 			id="formID" onsubmit="return checkPassword()">
 			Enter User name:&nbsp;&nbsp;&nbsp;<input type="text" name="username"
 				id="username">

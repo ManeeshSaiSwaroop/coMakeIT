@@ -1,0 +1,32 @@
+<div style="text-align: center">
+        <h1>Ticket Priority Updation Form</h1>
+        <form [formGroup]="updatePriorityForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+                <div class="form-group" style="text-align: center">
+                        <div class="col-sm-12">
+                                
+                                <input type="text" formControlName="ticketID" placeholder="*Enter TicketID">
+                                <div *ngIf="ticketID.invalid && (ticketID.dirty || ticketID.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="ticketID.errors.required">
+                                                Ticket ID is required
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="col-sm-12">
+                                
+                                <select formControlName="priority">
+                                        <option value="" disabled>Select Priority</option>
+                                        <option *ngFor="let priority of priorities" [value]="priority.priorityID">
+                                                {{priority.priorityName}}</option>
+                                </select>
+                                <div *ngIf="priority.invalid && (priority.dirty || priority.touched)"
+                                        class="alert alert-danger">
+                                        <div *ngIf="priority.errors.required">
+                                                Priority is required.
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+                <input type="submit" [disabled]="!updatePriorityForm.valid">
+        </form>
+</div>
